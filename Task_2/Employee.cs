@@ -11,16 +11,14 @@ namespace Task_2 {
     public class Employee : ISerializable {
 
         public Employee() { }
-        public Employee(string name, int age, string designation) {
 
+        public Employee(string name, int age, string designation) {
             Name = name;
             Age = age;
             Designation = designation;
-            
-
         }
 
-        private string Name { get; set; }
+        public string Name { get; set; }
 
         public int Age { get; set; }
 

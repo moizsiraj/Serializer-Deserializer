@@ -18,21 +18,16 @@ namespace Task_2 {
            
         }
 
-        public SerializeCommand getSerializer(string input, Type type, object objectData) {
+        public SerializeCommand GetSerializer(string input, Type type, object objectData) {
 
             _Type = type;
             _ObjectData = objectData;
 
-            switch (input) {
-
-                case "XML":
-                    return XMLSerialize(_Type, _ObjectData);
-                case "JSON":
-                    return JSONSerialize(_ObjectData);
-                default:
-                    return null;
-            }
-           
+            return input switch {
+                "XML" => XMLSerialize(_Type, _ObjectData),
+                "JSON" => JSONSerialize(_ObjectData),
+                _ => null,
+            };
         }
 
 

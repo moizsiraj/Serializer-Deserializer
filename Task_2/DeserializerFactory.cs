@@ -15,20 +15,15 @@ namespace Task_2 {
 
         public DeserializerFactory() { }
 
-        public DeserializeCommand getDeserializer(string input, Type type) {
+        public DeserializeCommand GetDeserializer(string input, Type type) {
 
             _Type = type;
 
-            switch (input) {
-
-                case "XML":
-                    return XMLDeserialize(_Type);
-                case "JSON":
-                    return JSONDeserialize(_Type);
-                default:
-                    return null;
-            }
-           
+            return input switch {
+                "XML" => XMLDeserialize(_Type),
+                "JSON" => JSONDeserialize(_Type),
+                _ => null,
+            };
         }
 
 

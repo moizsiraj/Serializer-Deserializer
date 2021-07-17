@@ -9,6 +9,7 @@ namespace Task_2 {
     class DeserializerFactory {
 
         private string _JSONFilePath = "D:/Coding/Assignments/Assignment_1/Task_2/Task_2/Outputs/OutputJSON.json";
+        
         private string _XMLFilePath = "D:/Coding/Assignments/Assignment_1/Task_2/Task_2/Outputs/OutputXML.xml";
 
         private Type _Type;

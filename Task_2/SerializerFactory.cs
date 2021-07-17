@@ -14,9 +14,7 @@ namespace Task_2 {
         private Type _Type;
         private object _ObjectData;
 
-        public SerializerFactory() {
-           
-        }
+        public SerializerFactory() {}
 
         public SerializeCommand GetSerializer(string input, Type type, object objectData) {
 

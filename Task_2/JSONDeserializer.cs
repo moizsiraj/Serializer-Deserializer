@@ -26,7 +26,7 @@ namespace Task_2 {
             JObject deserializedObject = null;
 
             if (File.Exists(_FilePath)) {
-                StreamReader streamReader = new StreamReader(_FilePath);
+                StreamReader streamReader = new(_FilePath);
                 JsonReader jsonReader = new JsonTextReader(streamReader);
                 deserializedObject = _JsonDeserializer.Deserialize(jsonReader) as JObject;
                 jsonReader.Close();

@@ -22,7 +22,7 @@ namespace Task_2 {
             return input switch {
                 "XML" => XMLDeserialize(_Type),
                 "JSON" => JSONDeserialize(_Type),
-                _ => null,
+                _ => throw new InvalidFileFormatException(),
             };
         }
 

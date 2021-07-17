@@ -11,25 +11,17 @@ namespace Task_2 {
             
             Console.WriteLine("Input desired file format (XML/JSON)");
             string fileFormat = Console.ReadLine();
-
-            SerializeCommand serializeCommand = serializeFactory.GetSerializer(fileFormat, typeof(Employee), empOne);
-            
-            if (serializeCommand == null) {
-                Console.WriteLine("Invalid file format");
-            }
-            else {
+            try {
+                SerializeCommand serializeCommand = serializeFactory.GetSerializer(fileFormat, typeof(Employee), empOne);
                 serializeCommand.Execute();
-            }
-            
-            DeserializeCommand deserializeCommand = deserializerFactory.GetDeserializer(fileFormat, typeof(Employee));
-
-            if (deserializeCommand == null) {
-                Console.WriteLine("Invalid file format");
-            }
-            else {
+                DeserializeCommand deserializeCommand = deserializerFactory.GetDeserializer(fileFormat, typeof(Employee));
                 Employee empTwo = (Employee)deserializeCommand.Execute();
                 Console.WriteLine(empTwo.Name);
             }
+            catch (Exception exception){
+                Console.WriteLine(exception.Message);
+            }
+            
 
         }
     }

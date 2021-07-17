@@ -26,7 +26,7 @@ namespace Task_2 {
             return input switch {
                 "XML" => XMLSerialize(_Type, _ObjectData),
                 "JSON" => JSONSerialize(_ObjectData),
-                _ => null,
+                _ => throw new InvalidFileFormatException(),
             };
         }
 

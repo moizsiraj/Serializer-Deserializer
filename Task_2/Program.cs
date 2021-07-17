@@ -6,27 +6,12 @@ namespace Task_2 {
 
             Employee empOne = new("Moiz", 23, "Software Dev");
             SerializerFactory serializeFactory = new();
+            DeserializerFactory deserializerFactory = new();
             SerializeCommand serializeCommand = serializeFactory.getSerializer("JSON", typeof(Employee), empOne);
             serializeCommand.Execute();
-            
-            /*Console.WriteLine("Deserialization Start");
-            XMLDeserializer xmlDeserialiser = new(typeof(Employee), XMLFilePath);
-            DeserializeCommand deserializeCommand = new(xmlDeserialiser);
+            DeserializeCommand deserializeCommand = deserializerFactory.getDeserializer("JSON", typeof(Employee));
             Employee empTwo = (Employee)deserializeCommand.Execute();
             Console.WriteLine(empTwo.Name);
-
-            Console.WriteLine("JSON");
-            Console.WriteLine("Serialization Start");
-            Employee empThree = new("Haris", 22, "Web Dev");
-            JSONSerializer jsonSerializer = new(empThree, JSONFilePath);
-            serializeCommand = new(jsonSerializer);
-            serializeCommand.Execute();
-
-            Console.WriteLine("Deserialization Start");
-            JSONDeserializer jsonDeserializer = new(typeof(Employee), JSONFilePath);
-            deserializeCommand = new(jsonDeserializer);
-            Employee empFour = (Employee)deserializeCommand.Execute();
-            Console.WriteLine(empFour.Name);*/
 
         }
     }

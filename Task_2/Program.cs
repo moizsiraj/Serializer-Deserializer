@@ -12,9 +12,11 @@ namespace Task_2 {
             Console.WriteLine("Input desired file format (XML/JSON)");
             string fileFormat = Console.ReadLine();
             try {
-                SerializeCommand serializeCommand = serializeFactory.GetSerializer(fileFormat, typeof(Employee), empOne);
+                ISerializer serializer = serializeFactory.GetSerializer(fileFormat, typeof(Employee), empOne);
+                SerializeCommand serializeCommand = new(serializer);
                 serializeCommand.Execute();
-                DeserializeCommand deserializeCommand = deserializerFactory.GetDeserializer(fileFormat, typeof(Employee));
+                IDeserializer deserializer = deserializerFactory.GetDeserializer(fileFormat, typeof(Employee));
+                DeserializeCommand deserializeCommand = new(deserializer);
                 Employee empTwo = (Employee)deserializeCommand.Execute();
                 Console.WriteLine(empTwo.Name);
             }

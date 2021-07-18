@@ -9,6 +9,5 @@ namespace Task_2 {
 
         public object Execute();
 
-        public void Undo();
     }
 }

@@ -16,7 +16,7 @@ namespace Task_2 {
 
         public SerializerFactory() {}
 
-        public SerializeCommand GetSerializer(string input, Type type, object objectData) {
+        public ISerializer GetSerializer(string input, Type type, object objectData) {
 
             _Type = type;
             _ObjectData = objectData;
@@ -29,20 +29,18 @@ namespace Task_2 {
         }
 
 
-        private SerializeCommand XMLSerialize(Type type, object objectData) {
+        private ISerializer XMLSerialize(Type type, object objectData) {
 
             XMLSerializer xmlSerializer = new(type, objectData, _XMLFilePath);
-            SerializeCommand serializeCommand = new(xmlSerializer);
 
-            return serializeCommand;
+            return xmlSerializer;
         }
 
-        private SerializeCommand JSONSerialize(object objectData) {
+        private ISerializer JSONSerialize(object objectData) {
 
             JSONSerializer jsonSerializer = new(objectData, _JSONFilePath);
-            SerializeCommand serializeCommand = new(jsonSerializer);
 
-            return serializeCommand;
+            return jsonSerializer;
         }
     }
 }

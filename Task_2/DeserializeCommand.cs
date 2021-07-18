@@ -17,8 +17,5 @@ namespace Task_2 {
             return Deserializer.Deserialize();
         }
 
-        public void Undo() {
-            throw new NotImplementedException();
-        }
     }
 }

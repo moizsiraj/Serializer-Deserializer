@@ -17,8 +17,5 @@ namespace Task_2 {
             return null; //ask what is better practice here.
         }
 
-        public void Undo() {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -16,7 +16,7 @@ namespace Task_2 {
 
         public DeserializerFactory() { }
 
-        public DeserializeCommand GetDeserializer(string input, Type type) {
+        public IDeserializer GetDeserializer(string input, Type type) {
 
             _Type = type;
 
@@ -28,20 +28,18 @@ namespace Task_2 {
         }
 
 
-        private DeserializeCommand XMLDeserialize(Type type) {
+        private IDeserializer XMLDeserialize(Type type) {
 
             XMLDeserializer xmlDeserialiser = new(type, _XMLFilePath);
-            DeserializeCommand deserializeCommand = new(xmlDeserialiser);
 
-            return deserializeCommand;
+            return xmlDeserialiser;
         }
 
-        private DeserializeCommand JSONDeserialize(Type type) {
+        private IDeserializer JSONDeserialize(Type type) {
 
             JSONDeserializer jsonDeserializer = new(type, _JSONFilePath);
-            DeserializeCommand deserializeCommand = new(jsonDeserializer);
 
-            return deserializeCommand;
+            return jsonDeserializer;
         }
     }
 }

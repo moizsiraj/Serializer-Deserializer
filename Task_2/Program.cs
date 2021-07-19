@@ -6,16 +6,17 @@ namespace Task_2 {
             
             Employee empOne = new("Moiz", 23, "Software Dev");
             
-            SerializerFactory serializeFactory = new();
-            DeserializerFactory deserializerFactory = new();
-            
             Console.WriteLine("Input desired file format (XML/JSON)");
             string fileFormat = Console.ReadLine();
+
+            Console.WriteLine("Input desired file path");
+            string filePath = Console.ReadLine();
+
             try {
-                ISerializer serializer = serializeFactory.GetSerializer(fileFormat, typeof(Employee), empOne);
+                ISerializer serializer = SerializerFactory.GetSerializer(fileFormat, typeof(Employee), empOne, filePath);
                 SerializeCommand serializeCommand = new(serializer);
                 serializeCommand.Execute();
-                IDeserializer deserializer = deserializerFactory.GetDeserializer(fileFormat, typeof(Employee));
+                IDeserializer deserializer = DeserializerFactory.GetDeserializer(fileFormat, typeof(Employee), filePath);
                 DeserializeCommand deserializeCommand = new(deserializer);
                 Employee empTwo = (Employee)deserializeCommand.Execute();
                 Console.WriteLine(empTwo.Name);

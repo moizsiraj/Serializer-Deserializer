@@ -8,37 +8,28 @@ namespace Task_2 {
 
     class SerializerFactory {
 
-        private string _JSONFilePath = "D:/Coding/Assignments/Assignment_1/Task_2/Task_2/Outputs/OutputJSON.json";
-        private string _XMLFilePath = "D:/Coding/Assignments/Assignment_1/Task_2/Task_2/Outputs/OutputXML.xml";
-
-        private Type _Type;
-        private object _ObjectData;
-
         public SerializerFactory() {}
 
-        public ISerializer GetSerializer(string input, Type type, object objectData) {
-
-            _Type = type;
-            _ObjectData = objectData;
+        public static ISerializer GetSerializer(string input, Type type, object objectData, string filePath) {
 
             return input switch {
-                "XML" => XMLSerialize(_Type, _ObjectData),
-                "JSON" => JSONSerialize(_ObjectData),
+                "XML" => XMLSerialize(type, objectData, filePath),
+                "JSON" => JSONSerialize(objectData, filePath),
                 _ => throw new InvalidFileFormatException(),
             };
         }
 
 
-        private ISerializer XMLSerialize(Type type, object objectData) {
+        private static ISerializer XMLSerialize(Type type, object objectData, string filePath) {
 
-            XMLSerializer xmlSerializer = new(type, objectData, _XMLFilePath);
+            XMLSerializer xmlSerializer = new(type, objectData, filePath);
 
             return xmlSerializer;
         }
 
-        private ISerializer JSONSerialize(object objectData) {
+        private static ISerializer JSONSerialize(object objectData, string filePath) {
 
-            JSONSerializer jsonSerializer = new(objectData, _JSONFilePath);
+            JSONSerializer jsonSerializer = new(objectData, filePath);
 
             return jsonSerializer;
         }

@@ -7,7 +7,13 @@ namespace Task_2 {
             Employee empOne = new("Moiz", 23, "Software Dev");
             
             Console.WriteLine("Input desired file format (XML/JSON)");
-            string fileFormat = Console.ReadLine();
+            string fileFormatInput = Console.ReadLine();
+
+            var fileFormat = fileFormatInput switch {
+                "XML" => FileFormats.XML,
+                "JSON" => FileFormats.JSON,
+                _ => throw new InvalidFileFormatException(),
+            };
 
             Console.WriteLine("Input desired file path");
             string filePath = Console.ReadLine();

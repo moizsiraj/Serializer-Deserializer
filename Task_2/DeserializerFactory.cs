@@ -10,11 +10,11 @@ namespace Task_2 {
 
         public DeserializerFactory() { }
 
-        public static IDeserializer GetDeserializer(string input, Type type, string filePath) {
+        public static IDeserializer GetDeserializer(FileFormats input, Type type, string filePath) {
 
             return input switch {
-                "XML" => XMLDeserialize(type, filePath),
-                "JSON" => JSONDeserialize(type, filePath),
+                FileFormats.XML => XMLDeserialize(type, filePath),
+                FileFormats.JSON => JSONDeserialize(type, filePath),
                 _ => throw new InvalidFileFormatException(),
             };
         }

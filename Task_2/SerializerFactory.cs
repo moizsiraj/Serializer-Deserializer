@@ -10,11 +10,11 @@ namespace Task_2 {
 
         public SerializerFactory() {}
 
-        public static ISerializer GetSerializer(string input, Type type, object objectData, string filePath) {
+        public static ISerializer GetSerializer(FileFormats input, Type type, object objectData, string filePath) {
 
             return input switch {
-                "XML" => XMLSerialize(type, objectData, filePath),
-                "JSON" => JSONSerialize(objectData, filePath),
+                FileFormats.XML => XMLSerialize(type, objectData, filePath),
+                FileFormats.JSON => JSONSerialize(objectData, filePath),
                 _ => throw new InvalidFileFormatException(),
             };
         }

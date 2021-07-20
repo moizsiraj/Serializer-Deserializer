@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Task_2 {
-    internal class DeserializeCommand : ICommand {
+    internal class DeserializeCommand : IDeserializeCommand {
 
         private readonly IDeserializer Deserializer;
 

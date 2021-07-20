@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Task_2 {
-    internal interface ICommand {
+    internal interface ISerializeCommand {
 
-        public object Execute();
+        public void Execute();
 
     }
 }
